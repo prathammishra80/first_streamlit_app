@@ -66,4 +66,4 @@ if streamlit.button('Add a fruit to the list'):
   back_from_func=insert_row(fruit_choice1)
   streamlit.text(back_from_func)
 
-  
+streamlit.text("Thanks for adding ",fruit_choice1) 
