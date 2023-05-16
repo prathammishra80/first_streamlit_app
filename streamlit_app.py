@@ -42,7 +42,6 @@ except URLError as e:
 
 
 
-
 # write your own comment -what does the next line do? 
 
 # write your own comment - what does this do?
@@ -62,8 +61,7 @@ if streamlit.button('Get Fruit load list'):
   streamlit.dataframe(my_data_rows)
 
   
-    
-
+ 
 fruit_choice1 = streamlit.text_input('What would you like to add?','Jackfruit')
 streamlit.write('Thanks for adding ', fruit_choice1)
 
