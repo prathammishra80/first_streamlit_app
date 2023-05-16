@@ -23,14 +23,14 @@ streamlit.dataframe(fruit_to_show)
 
 
 
-def get_fruitvice_data(this_fruit_choice):
+def get_fruitvice_data(fruit_choice):
   fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+fruit_choice)
   fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
   return fruityvice_normalized
   
 streamlit.header("Fruityvice Fruit Advice!")
 try:
-  fruit_choice = streamlit.text_input('What fruit would you like information about?','Kiwi')
+  fruit_choice = streamlit.text_input('What fruit would you like information about?')
   if not fruit_choice:
     streamlit.error("Please select a group to get information.")
   else:
@@ -51,12 +51,12 @@ import snowflake.connector
 fruit_choice1 = streamlit.text_input('What would you like to add?','Jackfruit')
 streamlit.write('Thanks for adding ', fruit_choice1)
 
-my_cur.execute("insert into fruit_load_list values ('from streamlit')")
+my_cur.execute("insert into fruit_load_list values('from streamlit')")
 
 streamlit.header("The current fruit load list contains:")
 def get_fruit_load_list():
   with my_cnx.cursor() as my_cur:
-    my_cur.execute("SELECT * from fruit_load_list")
+    my_cur.execute("select * from fruit_load_list")
     return my_cur.fetchall()
 if streamlit.button('Get Fruit load list'):
   my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
